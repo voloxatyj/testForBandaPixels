@@ -12,6 +12,7 @@ function App() {
   useEffect(() => {
     axios.get('https://api.github.com/search/repositories?q=KEYWORD')
       .then(res=> {
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         result = res.data.items.filter(item=>localStorage.getItem(item.id)!==null || item.full_name.startsWith(state.input))
         dispatch({type: "GET_DATA", payload: result})})
       .catch(err=>console.log(err));
